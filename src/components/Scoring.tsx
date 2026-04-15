@@ -53,14 +53,14 @@ export default function Scoring({ onNavigate }: { onNavigate: (s: string) => voi
                   <Grid className="text-[#9e3f4e]" size={24} />
                   <div>
                     <p className="font-bold text-sm">构图偏移</p>
-                    <p className="text-xs text-[#586064] mt-1">主体不在黄金分割线上，视觉重心向左侧倾斜。</p>
+                    <p className="text-xs text-[#586064] mt-1">商品主体不在黄金分割线上，未能突出品牌 Logo 或核心细节。</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 p-4 bg-[#f1f4f6] rounded-xl">
                   <Sun className="text-[#9e3f4e]" size={24} />
                   <div>
                     <p className="font-bold text-sm">光线过暗</p>
-                    <p className="text-xs text-[#586064] mt-1">右侧区域曝光不足，暗部细节丢失严重。</p>
+                    <p className="text-xs text-[#586064] mt-1">皮具/金属件反光处理不佳，暗部细节丢失严重。</p>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function Scoring({ onNavigate }: { onNavigate: (s: string) => voi
               </li>
               <li className="flex items-start gap-3 text-sm text-[#444a99]">
                 <CheckCircle2 className="text-[#5157a7] flex-shrink-0" size={20} />
-                <span>尝试俯拍或平视角度，避开复杂的背景干扰。</span>
+                <span>尝试平视角度拍摄，避开杂乱的门店背景干扰。</span>
               </li>
             </ul>
           </div>

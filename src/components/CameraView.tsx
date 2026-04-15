@@ -38,7 +38,7 @@ export default function CameraView({ onNavigate }: { onNavigate: (s: string) => 
           <div className="absolute top-8 left-1/2 -translate-x-1/2 w-4/5 text-center">
             <div className="bg-black/40 backdrop-blur-xl border border-white/10 px-4 py-3 rounded-xl">
               <p className="text-white text-sm font-medium tracking-wide">
-                请保持光线充足，正对宴会厅中心
+                请保持光线充足，正对橱窗陈列中心
               </p>
               <div className="mt-2 flex items-center justify-center space-x-2">
                 <Sun size={12} className="text-[#5157a7] fill-current" />
