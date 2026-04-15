@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Eye, Heart, Share, ChevronRight, Sparkles, Zap, Users, MapPin } from 'lucide-react';
 import HeaderCapsule from './HeaderCapsule';
+import NoteActionModal from './NoteActionModal';
 
 export default function Data() {
+  const [actionModal, setActionModal] = useState<{type: string, note: any} | null>(null);
+
   return (
     <div className="pt-20 px-4 space-y-5 pb-32">
       <header className="fixed top-0 left-0 w-full z-50 bg-[#f8f9fa]/80 backdrop-blur-xl flex justify-between items-center px-4 h-16">
         <div className="flex items-center gap-2">
-          <h1 className="text-xl font-extrabold text-[#4E54A4] tracking-tight">Merchant Hub</h1>
+          <h1 className="text-xl font-extrabold text-[#4E54A4] tracking-tight">数据中心</h1>
         </div>
         <HeaderCapsule />
       </header>
@@ -136,31 +140,45 @@ export default function Data() {
           <h3 className="text-base font-extrabold text-[#4E54A4]">潜在爆款识别</h3>
           <span className="ml-auto bg-[#4E54A4] text-white text-[8px] px-1.5 py-0.5 rounded-full font-bold">AI 实时</span>
         </div>
-        <div className="space-y-3">
-          <div className="flex gap-3 items-center bg-white p-2 rounded-xl shadow-sm">
-            <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK9g5biVwF7AV7fDzXqb5bXIigstBz8oGrEvTMIVPILojPo-VzwmGhqVvnALpew_mWhVkXGWSs70Yi9gOt94gU4OSoA1QRvh54DyEsCxW3EORXIkTHGNyw2wxKTnRcBMSdkDOlO5rygxT-NAJOk8lr_1DihyG1lqBd5EPpFKlzX-BDvvE0G6hyVBJUsGh7a180hfb2gbStVJzSPZOzjxVXS9zjFmZOT9TMQ1ZgekZKPcPekBc8hMkW5pHrwCeghCOQDb3mD1Ohlj4" className="w-full h-full object-cover" />
-            </div>
-            <div className="flex-grow min-w-0">
-              <h4 className="text-[11px] font-bold leading-tight mb-1 truncate">香港购物攻略：海港城必买清单...</h4>
-              <div className="flex gap-2 text-[8px] font-bold text-[#605e62]">
-                <span className="flex items-center gap-0.5"><Zap size={10} className="fill-current" />爆发率 92%</span>
-                <span className="flex items-center gap-0.5 text-[#4E54A4]"><Users size={10} className="fill-current" />18-25岁</span>
+        <div className="flex flex-col gap-3">
+          {[
+            { id: 1, title: '香港购物攻略：海港城必买清单...', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCK9g5biVwF7AV7fDzXqb5bXIigstBz8oGrEvTMIVPILojPo-VzwmGhqVvnALpew_mWhVkXGWSs70Yi9gOt94gU4OSoA1QRvh54DyEsCxW3EORXIkTHGNyw2wxKTnRcBMSdkDOlO5rygxT-NAJOk8lr_1DihyG1lqBd5EPpFKlzX-BDvvE0G6hyVBJUsGh7a180hfb2gbStVJzSPZOzjxVXS9zjFmZOT9TMQ1ZgekZKPcPekBc8hMkW5pHrwCeghCOQDb3mD1Ohlj4', burstStatus: 'viral', rate: '92%', audience: '18-25岁' },
+            { id: 2, title: '中古奢品探店：中环隐藏的宝藏店铺...', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtKKes6e6bLca-Wu9iob-rmzFEVtYNrK9w4t-ElmkewrXADRcHNchTwBU4aIZAarFqk7KcFCY6qS73Czery-m_ACff50JvbPpipVQ7Wb0lucwkWk5z_sCQSVIgzIM-Okk4CkY3412ITA_BJyXfS30KeYVbdTvMc1OgXEsFz22GrkYJmvxN2rSv4ohEaaBl5joIHofiS592dzHTD2bM9I8A0KjqrStWq1_B9sqrAyALIY-diM6ShC9dCKixvhhprctOuM63FUPmwuU', burstStatus: 'potential', rate: '85%', audience: '本地探店' },
+            { id: 3, title: '周末OOTD｜初秋高级感穿搭...', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAANIpx1BibL9UpKYkL5RHU-umlhl7z1_Xk-LDacbmzDPDObIrR9lG42enP6hjb0IrcTyh6tw7Uqw7n7Z6qh4sTBiaRV0m0UjqwO1j3h1A56EnBOmC_2w6YQphPJck6bi8t2ocMUysw-LJKud3Qyp60kWhpIbYmcEl1fksJUFDUwoT5ZOHW8vlQUsWDRQ-ewdzd2RlmWm2aQ11V_5PlP9P7qacwAo2HVTxp0D4_ORJlZrKxVk0qaDPrOowAe4CX3XCJ3YT3WY8nML0', burstStatus: 'climbing', rate: '45%', audience: '职场通勤' },
+            { id: 4, title: '日常好物分享：提升幸福感的小物件...', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlgdchApaO9MqUr4L2gAlW-6E387m0X3Z96DtUHmOkpbUSk7B7xru-r6slr9-9YRNpNzFC74u4iLipxFk7K3d7QN4omLiSy4pl-rD8YpQ6dUDlFA8ErPifQmsF9lPwEPDwK7rIX5kbnbs6qUYct7Da78abctp_UZzdHGAfwfwEwWeQpl9soR_fYk4fU4Dclmxhj8qBMXfxqHPRCIbaFxcsZsQUXh2nThprkmjzUJRVP5sGl7yJuWbmLWxFD-Js06-OQflBub2U6AI', burstStatus: 'steady', rate: '12%', audience: '精致生活' },
+          ].map(note => {
+            const config = {
+              steady: { label: '平稳表现', color: 'bg-gray-100 text-gray-600', action: '查看明细', actionStyle: 'bg-gray-100 text-gray-500', actionType: 'details' },
+              climbing: { label: '流量爬升中', color: 'bg-green-100 text-green-700', action: '优化评论区', actionStyle: 'bg-green-50 text-green-600 border border-green-200', actionType: 'comments' },
+              potential: { label: '高潜爆款', color: 'bg-orange-100 text-orange-700', action: '🔥 建议投流', actionStyle: 'bg-orange-500 text-white shadow-sm shadow-orange-500/20', actionType: 'ads' },
+              viral: { label: '极速爆发', color: 'bg-red-100 text-red-700 animate-pulse', action: '🚨 紧急截流', actionStyle: 'bg-red-500 text-white shadow-md shadow-red-500/30 animate-pulse', actionType: 'leads' },
+            }[note.burstStatus as 'steady' | 'climbing' | 'potential' | 'viral'];
+
+            return (
+              <div key={note.id} className={`flex gap-3 items-center bg-white p-2 rounded-xl shadow-sm ${note.burstStatus === 'viral' ? 'order-first border border-red-100' : ''}`}>
+                <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
+                  <img src={note.image} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-grow min-w-0">
+                  <h4 className="text-[11px] font-bold leading-tight mb-1 truncate">{note.title}</h4>
+                  <div className="flex gap-2 text-[8px] font-bold">
+                    <span className={`flex items-center gap-0.5 px-1.5 py-0.5 rounded ${config.color}`}>
+                      <Zap size={10} className="fill-current" /> {config.label} {note.rate}
+                    </span>
+                    <span className="flex items-center gap-0.5 text-[#4E54A4]"><Users size={10} className="fill-current" />{note.audience}</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 pl-2 border-l border-gray-100">
+                  <button 
+                    onClick={() => setActionModal({ type: config.actionType, note })}
+                    className={`text-[10px] font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-transform ${config.actionStyle}`}
+                  >
+                    {config.action}
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="flex gap-3 items-center bg-white p-2 rounded-xl shadow-sm">
-            <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtKKes6e6bLca-Wu9iob-rmzFEVtYNrK9w4t-ElmkewrXADRcHNchTwBU4aIZAarFqk7KcFCY6qS73Czery-m_ACff50JvbPpipVQ7Wb0lucwkWk5z_sCQSVIgzIM-Okk4CkY3412ITA_BJyXfS30KeYVbdTvMc1OgXEsFz22GrkYJmvxN2rSv4ohEaaBl5joIHofiS592dzHTD2bM9I8A0KjqrStWq1_B9sqrAyALIY-diM6ShC9dCKixvhhprctOuM63FUPmwuU" className="w-full h-full object-cover" />
-            </div>
-            <div className="flex-grow min-w-0">
-              <h4 className="text-[11px] font-bold leading-tight mb-1 truncate">中古奢品探店：中环隐藏的宝藏店铺...</h4>
-              <div className="flex gap-2 text-[8px] font-bold text-[#605e62]">
-                <span className="flex items-center gap-0.5"><Zap size={10} className="fill-current" />爆发率 85%</span>
-                <span className="flex items-center gap-0.5 text-[#4E54A4]"><MapPin size={10} className="fill-current" />本地探店</span>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
@@ -211,6 +229,14 @@ export default function Data() {
           查看更多明细
         </button>
       </section>
+
+      {actionModal && (
+        <NoteActionModal 
+          actionType={actionModal.type} 
+          note={actionModal.note} 
+          onClose={() => setActionModal(null)} 
+        />
+      )}
     </div>
   );
 }

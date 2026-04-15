@@ -2,30 +2,7 @@ import { useState } from 'react';
 import { Camera, ShoppingBag, Clock, CheckCircle2, CloudUpload, CheckCircle } from 'lucide-react';
 import HeaderCapsule from './HeaderCapsule';
 
-export default function Tasks({ onNavigate, role }: { onNavigate: (s: string) => void, role?: 'employee' | 'smb_owner' | null }) {
-  const [allDone, setAllDone] = useState(false);
-
-  if (allDone) {
-    return (
-      <div className="pt-20 px-6 space-y-8 pb-32 min-h-screen flex flex-col items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-20 h-20 bg-[#e0e0ff] rounded-full flex items-center justify-center mx-auto text-[#5157a7]">
-            <CheckCircle size={40} />
-          </div>
-          <h2 className="text-2xl font-extrabold text-[#2b3437]">今日任务已清空</h2>
-          <p className="text-sm text-[#586064]">您已完成所有待办事项，辛苦了！</p>
-          
-          <button 
-            onClick={() => window.location.reload()}
-            className="mt-8 px-8 py-3 bg-[#5157a7] text-white rounded-xl font-bold text-sm active:scale-95 transition-transform shadow-lg shadow-[#5157a7]/20"
-          >
-            退出小程序
-          </button>
-        </div>
-      </div>
-    );
-  }
-
+export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void }) {
   return (
     <div className="pt-20 px-6 space-y-8 pb-32">
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#f8f9fa]/80 backdrop-blur-xl">
@@ -39,14 +16,6 @@ export default function Tasks({ onNavigate, role }: { onNavigate: (s: string) =>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold tracking-tight">进行中素材收集</h2>
           <div className="flex items-center gap-2">
-            {role === 'employee' && (
-              <button 
-                onClick={() => setAllDone(true)}
-                className="text-xs text-[#5157a7] font-bold bg-[#e0e0ff] px-2 py-1 rounded-md active:scale-95 transition-transform"
-              >
-                一键完成
-              </button>
-            )}
             <span className="bg-[#e0e0ff] text-[#444a99] text-[10px] px-2.5 py-0.5 rounded-full font-bold">3 个待办</span>
           </div>
         </div>
