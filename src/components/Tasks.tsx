@@ -6,21 +6,21 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
     <div className="pt-20 px-6 space-y-8 pb-32">
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#f8f9fa]/80 backdrop-blur-xl">
         <div className="flex flex-col">
-          <h1 className="text-xl font-extrabold tracking-tight text-[#2b3437]">拍摄任务</h1>
+          <h1 className="text-xl font-extrabold tracking-tight text-[#2b3437]">素材任务</h1>
         </div>
         <HeaderCapsule />
       </header>
 
       <section>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold tracking-tight">进行中任务</h2>
+          <h2 className="text-xl font-bold tracking-tight">进行中素材收集</h2>
           <span className="bg-[#e0e0ff] text-[#444a99] text-[10px] px-2.5 py-0.5 rounded-full font-bold">3 个待办</span>
         </div>
         <div className="space-y-4">
           <div className="bg-white rounded-xl p-5 shadow-sm transition-transform active:scale-[0.98]">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-lg font-bold text-[#2b3437] leading-tight">K11 Musea 门店橱窗陈列拍摄</h3>
+                <h3 className="text-lg font-bold text-[#2b3437] leading-tight">K11 Musea 探店话题素材收集</h3>
                 <div className="flex gap-2 mt-2">
                   <span className="bg-[#eaeff1] text-[#586064] text-[11px] px-2 py-0.5 rounded-md font-medium">视觉陈列部</span>
                   <span className="bg-[#eaeff1] text-[#586064] text-[11px] px-2 py-0.5 rounded-md font-medium">执行人：王晓明</span>
@@ -30,53 +30,60 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                 <Camera className="text-[#5157a7]" size={24} />
               </div>
             </div>
-            <div className="mt-4 space-y-3">
-              <p className="text-xs font-bold text-[#2b3437]">📸 拍摄清单 (0/4)：</p>
+            <div className="mt-4 space-y-5">
               
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAANIpx1BibL9UpKYkL5RHU-umlhl7z1_Xk-LDacbmzDPDObIrR9lG42enP6hjb0IrcTyh6tw7Uqw7n7Z6qh4sTBiaRV0m0UjqwO1j3h1A56EnBOmC_2w6YQphPJck6bi8t2ocMUysw-LJKud3Qyp60kWhpIbYmcEl1fksJUFDUwoT5ZOHW8vlQUsWDRQ-ewdzd2RlmWm2aQ11V_5PlP9P7qacwAo2HVTxp0D4_ORJlZrKxVk0qaDPrOowAe4CX3XCJ3YT3WY8nML0" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">1. 远景</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">门店、人流、陈列、区域图，体现门店热度</p>
+              {/* Note 1 */}
+              <div className="space-y-3">
+                <p className="text-xs font-bold text-[#2b3437]">📝 搭配笔记 1：周末K11探店打卡</p>
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAANIpx1BibL9UpKYkL5RHU-umlhl7z1_Xk-LDacbmzDPDObIrR9lG42enP6hjb0IrcTyh6tw7Uqw7n7Z6qh4sTBiaRV0m0UjqwO1j3h1A56EnBOmC_2w6YQphPJck6bi8t2ocMUysw-LJKud3Qyp60kWhpIbYmcEl1fksJUFDUwoT5ZOHW8vlQUsWDRQ-ewdzd2RlmWm2aQ11V_5PlP9P7qacwAo2HVTxp0D4_ORJlZrKxVk0qaDPrOowAe4CX3XCJ3YT3WY8nML0" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">1. 远景</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">门店、人流、陈列、区域图，体现门店热度</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
+
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlgdchApaO9MqUr4L2gAlW-6E387m0X3Z96DtUHmOkpbUSk7B7xru-r6slr9-9YRNpNzFC74u4iLipxFk7K3d7QN4omLiSy4pl-rD8YpQ6dUDlFA8ErPifQmsF9lPwEPDwK7rIX5kbnbs6qUYct7Da78abctp_UZzdHGAfwfwEwWeQpl9soR_fYk4fU4Dclmxhj8qBMXfxqHPRCIbaFxcsZsQUXh2nThprkmjzUJRVP5sGl7yJuWbmLWxFD-Js06-OQflBub2U6AI" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">2. 近景</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">产品陈列、上身试背，突出产品质感</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
+                </div>
               </div>
 
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlgdchApaO9MqUr4L2gAlW-6E387m0X3Z96DtUHmOkpbUSk7B7xru-r6slr9-9YRNpNzFC74u4iLipxFk7K3d7QN4omLiSy4pl-rD8YpQ6dUDlFA8ErPifQmsF9lPwEPDwK7rIX5kbnbs6qUYct7Da78abctp_UZzdHGAfwfwEwWeQpl9soR_fYk4fU4Dclmxhj8qBMXfxqHPRCIbaFxcsZsQUXh2nThprkmjzUJRVP5sGl7yJuWbmLWxFD-Js06-OQflBub2U6AI" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">2. 近景</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">产品陈列、上身试背，突出产品质感</p>
+              {/* Note 2 */}
+              <div className="space-y-3">
+                <p className="text-xs font-bold text-[#2b3437]">📝 搭配笔记 2：K11独家限量款推荐</p>
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC12kATa3fFuLnBzmY-7p7Jja21GVZPe7N23mn58jrTdPNfDMF5Ky2LXlMgsrOeY_OP8kpa3cEcYBIPZ1JdIAokRSWFz9hXfqiU-PAT9KbJf_z701Db7yCDbEKIZN-A0-z52XhQORUxKk2Pk9ofdk1sBrKFPWMgvpnDnyyI-_OG5SMcHZRyAK2RYFYAvH7rpLce8dilMU8LgqXticqK_Rh_srzixm3zcVSZYtAU4c1Un-uID1sZMBnYOPfcn-Bde1MEUYoC9imgpfY" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">1. 特写</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">产品展示、门口带包装盒，展现细节</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
-              </div>
 
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC12kATa3fFuLnBzmY-7p7Jja21GVZPe7N23mn58jrTdPNfDMF5Ky2LXlMgsrOeY_OP8kpa3cEcYBIPZ1JdIAokRSWFz9hXfqiU-PAT9KbJf_z701Db7yCDbEKIZN-A0-z52XhQORUxKk2Pk9ofdk1sBrKFPWMgvpnDnyyI-_OG5SMcHZRyAK2RYFYAvH7rpLce8dilMU8LgqXticqK_Rh_srzixm3zcVSZYtAU4c1Un-uID1sZMBnYOPfcn-Bde1MEUYoC9imgpfY" className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">3. 特写</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">产品展示、门口带包装盒，展现细节</p>
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
+                    <Camera size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">2. 手指图</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">拍摄手指娱乐小镇和店门口的做指引</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
-              </div>
-
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
-                  <Camera size={20} />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">4. 手指图</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">拍摄手指娱乐小镇和店门口的做指引</p>
-                </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
               </div>
             </div>
             <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#eaeff1]">
@@ -91,7 +98,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
           <div className="bg-white rounded-xl p-5 shadow-sm transition-transform active:scale-[0.98]">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-lg font-bold text-[#2b3437] leading-tight">劳力士迪通拿新品开箱笔记</h3>
+                <h3 className="text-lg font-bold text-[#2b3437] leading-tight">劳力士迪通拿新品素材收集</h3>
                 <div className="flex gap-2 mt-2">
                   <span className="bg-[#eaeff1] text-[#586064] text-[11px] px-2 py-0.5 rounded-md font-medium">新媒体部</span>
                   <span className="bg-[#eaeff1] text-[#586064] text-[11px] px-2 py-0.5 rounded-md font-medium">执行人：李美华</span>
@@ -101,59 +108,66 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                 <ShoppingBag className="text-[#5157a7]" size={24} />
               </div>
             </div>
-            <div className="mt-4 space-y-3">
-              <p className="text-xs font-bold text-[#2b3437]">📸 拍摄清单 (0/4)：</p>
+            <div className="mt-4 space-y-5">
               
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
-                  <Camera size={20} />
+              {/* Note 1 */}
+              <div className="space-y-3">
+                <p className="text-xs font-bold text-[#2b3437]">📝 搭配笔记 1：沉浸式开箱体验</p>
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
+                    <Camera size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">1. 外包装特写</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">展现品牌经典绿色表盒及质感</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">1. 外包装特写</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">展现品牌经典绿色表盒及质感</p>
+
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
+                    <Camera size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">2. 开箱瞬间</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">半开盒状态，露出表盘一角</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
               </div>
 
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
-                  <Camera size={20} />
+              {/* Note 2 */}
+              <div className="space-y-3">
+                <p className="text-xs font-bold text-[#2b3437]">📝 搭配笔记 2：细节控必看</p>
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
+                    <Camera size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">1. 表盘细节</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">微距拍摄计时小表盘及指针</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">2. 开箱瞬间</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">半开盒状态，露出表盘一角</p>
-                </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
-              </div>
 
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
-                  <Camera size={20} />
+                <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
+                  <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
+                    <Camera size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#2b3437]">2. 上手试戴</p>
+                    <p className="text-[10px] text-[#586064] mt-0.5">自然光下上手效果，搭配正装袖口</p>
+                  </div>
+                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                    <Camera size={14} />
+                  </button>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">3. 表盘细节</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">微距拍摄计时小表盘及指针</p>
-                </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
-              </div>
-
-              <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-400">
-                  <Camera size={20} />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-[#2b3437]">4. 上手试戴</p>
-                  <p className="text-[10px] text-[#586064] mt-0.5">自然光下上手效果，搭配正装袖口</p>
-                </div>
-                <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
-                  <Camera size={14} />
-                </button>
               </div>
             </div>
             <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#eaeff1]">
@@ -169,7 +183,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
 
       <section>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold tracking-tight">已完成任务</h2>
+          <h2 className="text-xl font-bold tracking-tight">已完成素材收集</h2>
           <button className="text-[#5157a7] text-sm font-semibold">查看全部</button>
         </div>
         <div className="space-y-4">
@@ -186,6 +200,25 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                 <CheckCircle2 className="text-[#586064]/40 fill-current" size={24} />
               </div>
             </div>
+            
+            <div className="bg-white/50 p-3 rounded-lg border border-gray-100/50 mb-4">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs font-bold text-[#2b3437]/70">素材使用情况</span>
+                <span className="text-[10px] text-[#586064]">共产出 12 张</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="flex-1">
+                  <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#5157a7]/50 w-2/3"></div>
+                  </div>
+                </div>
+                <div className="flex gap-3 text-[10px] font-medium">
+                  <span className="text-[#5157a7]">已使用 8</span>
+                  <span className="text-[#586064]">剩余 4</span>
+                </div>
+              </div>
+            </div>
+
             <div className="flex items-center justify-between pt-4 border-t border-[#e3e9ec]">
               <div className="text-[#586064] text-xs font-medium">完成日期：2023.10.24</div>
               <div className="flex items-center text-[#4E54A4] text-xs font-bold bg-[#4E54A4]/10 px-3 py-1 rounded-full">
@@ -193,18 +226,6 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                 已同步
               </div>
             </div>
-          </div>
-
-          <div className="relative overflow-hidden bg-[#5157a7] rounded-2xl p-6 text-white">
-            <div className="relative z-10">
-              <p className="text-white/80 text-xs font-bold uppercase tracking-widest mb-1">今日拍摄提示</p>
-              <h4 className="text-xl font-extrabold mb-4 leading-tight">抓住下午 4 点的<br/>自然光影效果</h4>
-              <div className="bg-white/20 backdrop-blur-md inline-block px-4 py-2 rounded-xl text-xs font-bold">
-                查看光影指南
-              </div>
-            </div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-8 -mb-8 blur-xl"></div>
           </div>
         </div>
       </section>
