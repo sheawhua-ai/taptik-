@@ -1,4 +1,4 @@
-import { Eye, Heart, BarChart, ChevronRight, Sparkles, Zap, Users, MapPin } from 'lucide-react';
+import { Eye, Heart, Share, ChevronRight, Sparkles, Zap, Users, MapPin } from 'lucide-react';
 import HeaderCapsule from './HeaderCapsule';
 
 export default function Data() {
@@ -39,8 +39,8 @@ export default function Data() {
           </div>
           <div className="bg-white p-3 rounded-xl shadow-sm border border-[#abb3b7]/10">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-medium text-[#605e62]">转化量</span>
-              <BarChart size={14} className="text-[#4E54A4]" />
+              <span className="text-[10px] font-medium text-[#605e62]">分享数</span>
+              <Share size={14} className="text-[#4E54A4]" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-extrabold tracking-tight">452</span>
@@ -55,34 +55,75 @@ export default function Data() {
           <h3 className="text-base font-bold text-[#2b3437]">进行中的活动</h3>
           <ChevronRight size={18} className="text-[#605e62]" />
         </div>
-        <div className="flex overflow-x-auto no-scrollbar gap-3 pb-1">
-          <div className="flex-shrink-0 w-32 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/5">
-            <div className="w-full aspect-[3/4] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC12kATa3fFuLnBzmY-7p7Jja21GVZPe7N23mn58jrTdPNfDMF5Ky2LXlMgsrOeY_OP8kpa3cEcYBIPZ1JdIAokRSWFz9hXfqiU-PAT9KbJf_z701Db7yCDbEKIZN-A0-z52XhQORUxKk2Pk9ofdk1sBrKFPWMgvpnDnyyI-_OG5SMcHZRyAK2RYFYAvH7rpLce8dilMU8LgqXticqK_Rh_srzixm3zcVSZYtAU4c1Un-uID1sZMBnYOPfcn-Bde1MEUYoC9imgpfY')"}}></div>
-            <div className="p-2 space-y-1">
-              <h4 className="font-bold text-[11px] truncate leading-tight">海港城店 - 盛夏焕新</h4>
-              <div className="flex flex-col">
-                <span className="text-[9px] text-[#605e62]">2,431 笔记</span>
-                <span className="text-[9px] font-bold text-[#4E54A4]">达成 88%</span>
+        <div className="flex overflow-x-auto gap-4 no-scrollbar pb-2">
+          {/* Card 1: No Poster with Questionnaire */}
+          <div className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 flex flex-col">
+            <div className="w-full aspect-[3/4] bg-gradient-to-br from-[#e0e0ff] to-[#f8f9fa] p-4 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-[#5157a7]/10">
+                <Sparkles size={80} />
+              </div>
+              <div className="flex justify-end relative z-10">
+                <span className="bg-[#5157a7] text-white text-[9px] px-1.5 py-0.5 rounded font-bold">含问卷</span>
+              </div>
+              <div className="relative z-10">
+                <p className="text-[10px] text-[#5157a7] font-bold mb-1">SS24</p>
+                <h4 className="font-extrabold text-lg text-[#2b3437] leading-tight">中环旗舰店<br/>春夏新品</h4>
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">12.4k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">856</span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex-shrink-0 w-32 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/5">
-            <div className="w-full aspect-[3/4] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuChr4RnXZ157z7oovwYW79i9Oarcfxhpae40ItMTFZeEHLcYWKQZ5r1ZYrZ0z4Oohn4VwiFge0_bpQCQvVUG__AVf1Q9QGF3caUB8aBZbARoESdBcGbHxw29uLBc-PHFJQ1lUSmp3SqgB8QxKeUeSwjWKspRbz57gcwzoy3F7b7PYgB-XuGmFRClix9M16Wh7EJUcUN16b47MqN8HCAF2T6Kgr84W0Z5vV4bceVY5J1QuRa8EGF5sA5qblA19sBFoa3S-GjOrmF-SE')"}}></div>
-            <div className="p-2 space-y-1">
-              <h4 className="font-bold text-[11px] truncate leading-tight">中环旗舰店 - 新品周</h4>
-              <div className="flex flex-col">
-                <span className="text-[9px] text-[#605e62]">1,205 笔记</span>
-                <span className="text-[9px] font-bold text-[#4E54A4]">达成 64%</span>
+
+          {/* Card 2: Poster */}
+          <div className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 flex flex-col">
+            <div className="w-full aspect-[3/4] bg-cover bg-center relative" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuChr4RnXZ157z7oovwYW79i9Oarcfxhpae40ItMTFZeEHLcYWKQZ5r1ZYrZ0z4Oohn4VwiFge0_bpQCQvVUG__AVf1Q9QGF3caUB8aBZbARoESdBcGbHxw29uLBc-PHFJQ1lUSmp3SqgB8QxKeUeSwjWKspRbz57gcwzoy3F7b7PYgB-XuGmFRClix9M16Wh7EJUcUN16b47MqN8HCAF2T6Kgr84W0Z5vV4bceVY5J1QuRa8EGF5sA5qblA19sBFoa3S-GjOrmF-SE')"}}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3">
+                <h4 className="font-bold text-sm text-white leading-tight">稀有皮具展<br/>海港城</h4>
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">8.2k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">432</span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex-shrink-0 w-32 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/5">
-            <div className="w-full aspect-[3/4] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5gvTU1OA36J0mqwjmAKkQjsMshXjKpD8a9J0mqN_Based157uQ4VeBPyG_sX4xDNp432yGocaFcLkmP3EmUo0LEhCVogD0aq-YnPlqv2hYcnim3L7FP-gt-AqcE1gVHGSmYlVPt8z4qjpiV3apoFzrObLkaGmWvoLWWhgOLGi-Sz71vE_6ItiyuRyyy0U7wJkKiH3tjB2CobtrIti4ZGdf62R0LcYAH7MMWUUPusLbcv_MLShTY2_66v8gc6dn5xHhXLLWg-uvEY')"}}></div>
-            <div className="p-2 space-y-1">
-              <h4 className="font-bold text-[11px] truncate leading-tight">K11 Musea - 艺术展</h4>
-              <div className="flex flex-col">
-                <span className="text-[9px] text-[#605e62]">892 笔记</span>
-                <span className="text-[9px] font-bold text-[#4E54A4]">达成 42%</span>
+
+          {/* Card 3: Poster */}
+          <div className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 flex flex-col">
+            <div className="w-full aspect-[3/4] bg-cover bg-center relative" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5gvTU1OA36J0mqwjmAKkQjsMshXjKpD8a9J0mqN_Based157uQ4VeBPyG_sX4xDNp432yGocaFcLkmP3EmUo0LEhCVogD0aq-YnPlqv2hYcnim3L7FP-gt-AqcE1gVHGSmYlVPt8z4qjpiV3apoFzrObLkaGmWvoLWWhgOLGi-Sz71vE_6ItiyuRyyy0U7wJkKiH3tjB2CobtrIti4ZGdf62R0LcYAH7MMWUUPusLbcv_MLShTY2_66v8gc6dn5xHhXLLWg-uvEY')"}}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3">
+                <h4 className="font-bold text-sm text-white leading-tight">K11 Musea<br/>艺术展</h4>
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">5.6k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">218</span>
+                </div>
               </div>
             </div>
           </div>

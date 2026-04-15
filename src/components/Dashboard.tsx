@@ -17,7 +17,7 @@ export default function Dashboard({ onNavigate }: { onNavigate: (s: string) => v
       typeColor: "bg-[#9e3f4e]",
       time: "刚刚",
       content: "昨天在海港城店体验极差，SA态度冷漠，问什么都爱答不理，这就是你们的奢品服务吗？",
-      aiSuggestion: "尊贵的陈女士您好，非常抱歉给您带来了不愉快的购物体验。我们非常重视您的反馈，已经第一时间向海港城店长核实情况并进行内部整改。为了表达我们的歉意，诚邀您再次光临，我们将安排专属资深顾问为您提供一对一服务，并为您准备了一份精美歉礼。期待能有机会弥补我们的不足。",
+      aiSuggestion: "尊贵的陈女士您好🙏，非常抱歉给您带来了不愉快的购物体验😔。我们非常重视您的反馈，已经第一时间向海港城店长核实情况并进行内部整改。为了表达我们的歉意，诚邀您再次光临，我们将安排专属资深顾问为您提供一对一服务，并为您准备了一份精美歉礼🎁。期待能有机会弥补我们的不足✨。",
       buttonText: "紧急安抚并回复",
       buttonColor: "bg-[#9e3f4e]",
       borderColor: "border-[#9e3f4e]/20"
@@ -31,7 +31,7 @@ export default function Dashboard({ onNavigate }: { onNavigate: (s: string) => v
       tag2: "客资",
       time: "10分钟前",
       content: "请问广东道门店有香奈儿 CF Mini 黑牛皮现货吗？下周去香港旅游顺便去逛逛。",
-      aiSuggestion: "Mandy您好！感谢您关注我们。目前广东道门店香奈儿 CF Mini 黑牛皮还有少量现货哦！由于该款式非常抢手，建议您确定行程后提前与我们联系，我们可以为您预留24小时。祝您香港之旅愉快，期待您的光临！",
+      aiSuggestion: "Mandy您好👋！感谢您关注我们。目前广东道门店香奈儿 CF Mini 黑牛皮还有少量现货哦👜！由于该款式非常抢手🔥，建议您确定行程后提前与我们联系，我们可以为您预留24小时⏳。祝您香港之旅愉快✈️，期待您的光临✨！",
       buttonText: "跳转笔记回复",
       buttonColor: "bg-[#5157a7]",
       borderColor: "border-transparent"
@@ -95,35 +95,74 @@ export default function Dashboard({ onNavigate }: { onNavigate: (s: string) => v
           <span className="text-[#5157a7] text-sm font-semibold">查看全部</span>
         </div>
         <div className="flex overflow-x-auto gap-4 no-scrollbar pb-2">
-          <div onClick={() => onNavigate('activity_detail')} className="flex-shrink-0 w-64 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 cursor-pointer active:scale-95 transition-transform">
-            <div className="mb-4">
-              <h4 className="font-bold text-base text-[#2b3437] mb-1">中环旗舰店 - 春夏新品</h4>
-              <p className="text-[10px] text-[#586064] uppercase tracking-wider">SS24 Collection Preview</p>
-            </div>
-            <div className="flex justify-between items-center pt-3 border-t border-gray-50">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-[#586064]">浏览量</span>
-                <span className="font-bold text-sm text-[#2b3437]">12.4k</span>
+          {/* Card 1: No Poster with Questionnaire */}
+          <div onClick={() => onNavigate('activity_detail')} className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 cursor-pointer active:scale-95 transition-transform flex flex-col">
+            <div className="w-full aspect-[3/4] bg-gradient-to-br from-[#e0e0ff] to-[#f8f9fa] p-4 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-[#5157a7]/10">
+                <Sparkles size={80} />
               </div>
-              <div className="flex flex-col items-end">
-                <span className="text-[10px] text-[#586064]">互动</span>
-                <span className="font-bold text-sm text-[#5157a7]">856</span>
+              <div className="flex justify-end relative z-10">
+                <span className="bg-[#5157a7] text-white text-[9px] px-1.5 py-0.5 rounded font-bold">含问卷</span>
+              </div>
+              <div className="relative z-10">
+                <p className="text-[10px] text-[#5157a7] font-bold mb-1">SS24</p>
+                <h4 className="font-extrabold text-lg text-[#2b3437] leading-tight">中环旗舰店<br/>春夏新品</h4>
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">12.4k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">856</span>
+                </div>
               </div>
             </div>
           </div>
-          <div onClick={() => onNavigate('activity_detail')} className="flex-shrink-0 w-64 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 cursor-pointer active:scale-95 transition-transform">
-            <div className="mb-4">
-              <h4 className="font-bold text-base text-[#2b3437] mb-1">稀有皮具展 - 海港城</h4>
-              <p className="text-[10px] text-[#586064] uppercase tracking-wider">Exotic Leather Event</p>
-            </div>
-            <div className="flex justify-between items-center pt-3 border-t border-gray-50">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-[#586064]">浏览量</span>
-                <span className="font-bold text-sm text-[#2b3437]">8.2k</span>
+
+          {/* Card 2: Poster */}
+          <div onClick={() => onNavigate('activity_detail')} className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 cursor-pointer active:scale-95 transition-transform flex flex-col">
+            <div className="w-full aspect-[3/4] bg-cover bg-center relative" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuChr4RnXZ157z7oovwYW79i9Oarcfxhpae40ItMTFZeEHLcYWKQZ5r1ZYrZ0z4Oohn4VwiFge0_bpQCQvVUG__AVf1Q9QGF3caUB8aBZbARoESdBcGbHxw29uLBc-PHFJQ1lUSmp3SqgB8QxKeUeSwjWKspRbz57gcwzoy3F7b7PYgB-XuGmFRClix9M16Wh7EJUcUN16b47MqN8HCAF2T6Kgr84W0Z5vV4bceVY5J1QuRa8EGF5sA5qblA19sBFoa3S-GjOrmF-SE')"}}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3">
+                <h4 className="font-bold text-sm text-white leading-tight">稀有皮具展<br/>海港城</h4>
               </div>
-              <div className="flex flex-col items-end">
-                <span className="text-[10px] text-[#586064]">互动</span>
-                <span className="font-bold text-sm text-[#5157a7]">432</span>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">8.2k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">432</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Poster */}
+          <div onClick={() => onNavigate('activity_detail')} className="flex-shrink-0 w-36 bg-white rounded-xl overflow-hidden shadow-sm border border-[#abb3b7]/10 cursor-pointer active:scale-95 transition-transform flex flex-col">
+            <div className="w-full aspect-[3/4] bg-cover bg-center relative" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5gvTU1OA36J0mqwjmAKkQjsMshXjKpD8a9J0mqN_Based157uQ4VeBPyG_sX4xDNp432yGocaFcLkmP3EmUo0LEhCVogD0aq-YnPlqv2hYcnim3L7FP-gt-AqcE1gVHGSmYlVPt8z4qjpiV3apoFzrObLkaGmWvoLWWhgOLGi-Sz71vE_6ItiyuRyyy0U7wJkKiH3tjB2CobtrIti4ZGdf62R0LcYAH7MMWUUPusLbcv_MLShTY2_66v8gc6dn5xHhXLLWg-uvEY')"}}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3">
+                <h4 className="font-bold text-sm text-white leading-tight">K11 Musea<br/>艺术展</h4>
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-[#586064]">曝光量</span>
+                  <span className="font-bold text-[11px] text-[#2b3437]">5.6k</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-[9px] text-[#586064]">互动</span>
+                  <span className="font-bold text-[11px] text-[#5157a7]">218</span>
+                </div>
               </div>
             </div>
           </div>

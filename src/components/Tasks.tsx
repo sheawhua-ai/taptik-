@@ -1,7 +1,31 @@
-import { Camera, ShoppingBag, Clock, CheckCircle2, CloudUpload } from 'lucide-react';
+import { useState } from 'react';
+import { Camera, ShoppingBag, Clock, CheckCircle2, CloudUpload, CheckCircle } from 'lucide-react';
 import HeaderCapsule from './HeaderCapsule';
 
-export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void }) {
+export default function Tasks({ onNavigate, role }: { onNavigate: (s: string) => void, role?: 'employee' | 'smb_owner' | null }) {
+  const [allDone, setAllDone] = useState(false);
+
+  if (allDone) {
+    return (
+      <div className="pt-20 px-6 space-y-8 pb-32 min-h-screen flex flex-col items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-20 h-20 bg-[#e0e0ff] rounded-full flex items-center justify-center mx-auto text-[#5157a7]">
+            <CheckCircle size={40} />
+          </div>
+          <h2 className="text-2xl font-extrabold text-[#2b3437]">今日任务已清空</h2>
+          <p className="text-sm text-[#586064]">您已完成所有待办事项，辛苦了！</p>
+          
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-8 px-8 py-3 bg-[#5157a7] text-white rounded-xl font-bold text-sm active:scale-95 transition-transform shadow-lg shadow-[#5157a7]/20"
+          >
+            退出小程序
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="pt-20 px-6 space-y-8 pb-32">
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#f8f9fa]/80 backdrop-blur-xl">
@@ -14,7 +38,17 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold tracking-tight">进行中素材收集</h2>
-          <span className="bg-[#e0e0ff] text-[#444a99] text-[10px] px-2.5 py-0.5 rounded-full font-bold">3 个待办</span>
+          <div className="flex items-center gap-2">
+            {role === 'employee' && (
+              <button 
+                onClick={() => setAllDone(true)}
+                className="text-xs text-[#5157a7] font-bold bg-[#e0e0ff] px-2 py-1 rounded-md active:scale-95 transition-transform"
+              >
+                一键完成
+              </button>
+            )}
+            <span className="bg-[#e0e0ff] text-[#444a99] text-[10px] px-2.5 py-0.5 rounded-full font-bold">3 个待办</span>
+          </div>
         </div>
         <div className="space-y-4">
           <div className="bg-white rounded-xl p-5 shadow-sm transition-transform active:scale-[0.98]">
@@ -196,8 +230,9 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                   <span className="bg-[#e3e9ec] text-[#586064] text-[11px] px-2 py-0.5 rounded-md font-medium">执行人：赵敏</span>
                 </div>
               </div>
-              <div className="flex flex-col items-end">
+              <div className="flex flex-col items-end gap-2">
                 <CheckCircle2 className="text-[#586064]/40 fill-current" size={24} />
+                <span className="bg-[#ffedcc] text-[#d97706] text-[9px] px-1.5 py-0.5 rounded font-bold">需补素材</span>
               </div>
             </div>
             
@@ -209,14 +244,27 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-[#5157a7]/50 w-2/3"></div>
+                    <div className="h-full bg-[#5157a7]/50 w-full"></div>
                   </div>
                 </div>
                 <div className="flex gap-3 text-[10px] font-medium">
-                  <span className="text-[#5157a7]">已使用 8</span>
-                  <span className="text-[#586064]">剩余 4</span>
+                  <span className="text-[#5157a7]">已使用 12</span>
+                  <span className="text-[#9e3f4e] font-bold">剩余 0</span>
                 </div>
               </div>
+            </div>
+
+            <div className="bg-[#f8f9fa] p-3 rounded-xl border border-gray-100 flex items-center gap-3 mb-4 opacity-100">
+              <div className="w-10 h-10 bg-[#e0e0ff]/50 rounded-lg flex-shrink-0 flex items-center justify-center text-[#5157a7]">
+                <Camera size={16} />
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-bold text-[#2b3437]">新增笔记：晚宴伴手礼揭秘</p>
+                <p className="text-[10px] text-[#9e3f4e] mt-0.5 font-medium">急需：伴手礼特写、包装细节</p>
+              </div>
+              <button onClick={() => onNavigate('camera')} className="px-3 py-1.5 rounded-full bg-[#5157a7] text-white text-[10px] font-bold active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                去补充
+              </button>
             </div>
 
             <div className="flex items-center justify-between pt-4 border-t border-[#e3e9ec]">
