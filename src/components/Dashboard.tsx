@@ -2,7 +2,7 @@ import { Bell, LayoutDashboard, Camera, ShoppingBag, Video, MessageCircle, X, Co
 import { useState } from 'react';
 import HeaderCapsule from './HeaderCapsule';
 
-export default function Dashboard({ onNavigate }: { onNavigate: (s: string) => void }) {
+export default function Dashboard({ onNavigate, onRestrictedAction }: { onNavigate: (s: string) => void, onRestrictedAction: (action: () => void) => void }) {
   const [replyModalOpen, setReplyModalOpen] = useState(false);
   const [currentComment, setCurrentComment] = useState<any>(null);
   const [replyText, setReplyText] = useState('');
@@ -39,9 +39,11 @@ export default function Dashboard({ onNavigate }: { onNavigate: (s: string) => v
   ];
 
   const handleOpenReply = (comment: any) => {
-    setCurrentComment(comment);
-    setReplyText(comment.aiSuggestion);
-    setReplyModalOpen(true);
+    onRestrictedAction(() => {
+      setCurrentComment(comment);
+      setReplyText(comment.aiSuggestion);
+      setReplyModalOpen(true);
+    });
   };
 
   const handleCopyAndJump = () => {

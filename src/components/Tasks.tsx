@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Camera, ShoppingBag, Clock, CheckCircle2, CloudUpload, CheckCircle } from 'lucide-react';
 import HeaderCapsule from './HeaderCapsule';
 
-export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void }) {
+export default function Tasks({ onNavigate, onRestrictedAction }: { onNavigate: (s: string) => void, onRestrictedAction: (action: () => void) => void }) {
   return (
     <div className="pt-20 px-6 space-y-8 pb-32">
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#f8f9fa]/80 backdrop-blur-xl">
@@ -44,7 +44,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">1. 远景</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">门店、人流、陈列、区域图，体现门店热度</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -55,7 +55,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">2. 近景</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">产品陈列、上身试背，突出产品质感</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -70,7 +70,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">1. 特写</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">产品展示、门口带包装盒，展现细节</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -83,7 +83,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">2. 手指图</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">拍摄手指娱乐小镇和店门口的做指引</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -124,7 +124,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">1. 外包装特写</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">展现品牌经典绿色表盒及质感</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -137,7 +137,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">2. 开箱瞬间</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">半开盒状态，露出表盘一角</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -154,7 +154,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">1. 表盘细节</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">微距拍摄计时小表盘及指针</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -167,7 +167,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                     <p className="text-sm font-bold text-[#2b3437]">2. 上手试戴</p>
                     <p className="text-[10px] text-[#586064] mt-0.5">自然光下上手效果，搭配正装袖口</p>
                   </div>
-                  <button onClick={() => onNavigate('camera')} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+                  <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="w-8 h-8 rounded-full bg-[#5157a7] text-white flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                     <Camera size={14} />
                   </button>
                 </div>
@@ -231,7 +231,7 @@ export default function Tasks({ onNavigate }: { onNavigate: (s: string) => void 
                 <p className="text-xs font-bold text-[#2b3437]">新增笔记：晚宴伴手礼揭秘</p>
                 <p className="text-[10px] text-[#9e3f4e] mt-0.5 font-medium">急需：伴手礼特写、包装细节</p>
               </div>
-              <button onClick={() => onNavigate('camera')} className="px-3 py-1.5 rounded-full bg-[#5157a7] text-white text-[10px] font-bold active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
+              <button onClick={() => onRestrictedAction(() => onNavigate('camera'))} className="px-3 py-1.5 rounded-full bg-[#5157a7] text-white text-[10px] font-bold active:scale-95 transition-transform shadow-md shadow-[#5157a7]/20">
                 去补充
               </button>
             </div>
