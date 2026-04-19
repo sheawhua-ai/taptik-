@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import Tasks from './components/Tasks';
 import Data from './components/Data';
+import ContextHub from './components/ContextHub';
 import CameraView from './components/CameraView';
 import Scoring from './components/Scoring';
 import ActivityDetail from './components/ActivityDetail';
@@ -11,7 +12,7 @@ import WeChatPushSimulation from './components/WeChatPushSimulation';
 import ServiceAccountGuide from './components/ServiceAccountGuide';
 import Login from './components/Login';
 
-export type Screen = 'dashboard' | 'tasks' | 'data' | 'camera' | 'scoring' | 'activity_detail' | 'lead_detail';
+export type Screen = 'dashboard' | 'tasks' | 'data' | 'context_hub' | 'camera' | 'scoring' | 'activity_detail' | 'lead_detail';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,13 +53,14 @@ export default function App() {
     return <Login onLogin={() => setIsLoggedIn(true)} />;
   }
 
-  const showBottomNav = ['dashboard', 'tasks', 'data'].includes(currentScreen);
+  const showBottomNav = ['dashboard', 'tasks', 'data', 'context_hub'].includes(currentScreen);
 
   return (
     <div className={`min-h-screen bg-[#f8f9fa] text-[#2b3437] font-sans ${showBottomNav ? 'pb-20' : ''} no-scrollbar overflow-y-auto overflow-x-hidden relative`}>
       {showGuide && <ServiceAccountGuide onComplete={handleGuideComplete} />}
       
       {currentScreen === 'dashboard' && <Dashboard onNavigate={navigateTo} onRestrictedAction={handleRestrictedAction} />}
+      {currentScreen === 'context_hub' && <ContextHub />}
       {currentScreen === 'tasks' && <Tasks onNavigate={navigateTo} onRestrictedAction={handleRestrictedAction} />}
       {currentScreen === 'data' && <Data />}
       {currentScreen === 'camera' && <CameraView onNavigate={navigateTo} />}
