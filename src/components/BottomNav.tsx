@@ -24,7 +24,7 @@ export default function BottomNav({ currentScreen, onNavigate }: { currentScreen
         className={`flex flex-col items-center justify-center flex-1 h-12 transition-colors ${currentScreen === 'context_hub' ? 'text-[#5157a7]' : 'text-[#abb3b7]'}`}
       >
         <Zap size={24} strokeWidth={currentScreen === 'context_hub' ? 2.5 : 2} />
-        <span className={`text-[10px] mt-1 ${currentScreen === 'context_hub' ? 'font-bold' : 'font-medium'}`}>情报中心</span>
+        <span className={`text-[10px] mt-1 ${currentScreen === 'context_hub' ? 'font-bold' : 'font-medium'}`}>策略微调</span>
       </button>
 
       <button 

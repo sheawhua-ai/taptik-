@@ -10,22 +10,22 @@ const ACTIVE_STRATEGIES = [
   { 
     id: 's1', 
     title: '五一档期高客单转化模型', 
-    icon: Flame, 
-    iconColor: 'text-[#ff4d4f]', 
-    iconBg: 'bg-[#ff4d4f]/10',
-    status: '运行中', 
     deliveredToday: 12,
-    gradient: 'from-[#ff4d4f]/5 to-transparent'
+    variables: [
+      { label: '主推款', value: '春季全系新品', type: 'text' },
+      { label: '利益点', value: '满300减50', type: 'text' },
+      { label: '笔记频率', value: '3篇/日', type: 'text' }
+    ]
   },
   { 
     id: 's2', 
     title: '春季全系新品种草模型', 
-    icon: Leaf, 
-    iconColor: 'text-[#52c41a]', 
-    iconBg: 'bg-[#52c41a]/10',
-    status: '运行中', 
     deliveredToday: 8,
-    gradient: 'from-[#52c41a]/5 to-transparent'
+    variables: [
+      { label: '主推款', value: '碎花裙/防晒衣', type: 'text' },
+      { label: '笔记风格', value: '清新/户外', type: 'text' },
+      { label: '评论抽奖', value: '防晒霜小样', type: 'text' }
+    ]
   },
 ];
 
@@ -60,12 +60,8 @@ export default function ContextHub() {
 
   const handleTuningRecordClick = () => {
     if (tuningStep !== 'input') return;
-    setIsTuningRecording(true);
-    setTimeout(() => {
-      setIsTuningRecording(false);
-      setTuningStep('processing');
-      setTimeout(() => setTuningStep('result'), 1500);
-    }, 2000);
+    setTuningStep('processing');
+    setTimeout(() => setTuningStep('result'), 1500);
   };
 
   const openNewIdea = () => {
@@ -93,39 +89,29 @@ export default function ContextHub() {
       <div className="mb-6 relative z-10 pl-2">
         <h1 className="text-2xl font-extrabold text-[#2b3437] tracking-tight flex items-center">
           <Sparkles className="text-[#5157a7] mr-2" size={24} />
-          智能策略群
+          策略微调
         </h1>
         <p className="text-xs text-[#8b959a] mt-1.5 font-medium">全局掌控 · 实时干预</p>
       </div>
 
       {/* Active Strategy Dashboard */}
       <div className="space-y-4 relative z-10">
-        <h2 className="text-[13px] font-bold text-[#8b959a] uppercase tracking-wider pl-2">运行中模型 Active Models</h2>
+        <h2 className="text-[13px] font-bold text-[#8b959a] tracking-wider pl-2">当前策略模型</h2>
         {ACTIVE_STRATEGIES.map((strategy) => (
           <motion.div
             key={strategy.id}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleStrategyClick(strategy)}
-            className={`bg-white/80 backdrop-blur-xl border border-white/40 p-5 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden cursor-pointer bg-gradient-to-br ${strategy.gradient}`}
+            className="bg-white p-5 rounded-[20px] shadow-sm border border-gray-100 relative overflow-hidden cursor-pointer active:scale-95 transition-transform"
           >
-            <div className="flex justify-between items-start mb-4">
-              <div className={`w-10 h-10 rounded-2xl ${strategy.iconBg} flex items-center justify-center`}>
-                <strategy.icon className={strategy.iconColor} size={20} />
-              </div>
-              <div className="flex items-center space-x-1.5 bg-green-50 px-2.5 py-1 rounded-full border border-green-100">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#52c41a] animate-pulse" />
-                <span className="text-[10px] font-bold text-[#52c41a]">{strategy.status}</span>
-              </div>
-            </div>
+            <h3 className="text-[15px] font-bold text-[#2b3437] leading-snug mb-3">{strategy.title}</h3>
             
-            <h3 className="text-base font-bold text-[#2b3437] leading-snug mb-2 pr-4">{strategy.title}</h3>
-            
-            <div className="flex justify-between items-center mt-4">
-              <div className="text-xs text-[#8b959a] font-medium flex items-center">
-                今日下发 <span className="text-[#2b3437] font-bold mx-1 text-sm">{strategy.deliveredToday}</span> 篇
+            <div className="flex justify-between items-center">
+              <div className="text-xs text-[#8b959a] font-medium flex items-center bg-gray-50 px-2.5 py-1 rounded-md">
+                今日下发 <span className="text-[#2b3437] font-bold mx-1 text-[13px]">{strategy.deliveredToday}</span> 篇
               </div>
               <div className="flex items-center text-[#5157a7] text-xs font-bold bg-[#f0f1ff] px-3 py-1.5 rounded-full">
-                定向微调 <ChevronRight size={14} className="ml-0.5" />
+                去微调 <ChevronRight size={14} className="ml-0.5" />
               </div>
             </div>
           </motion.div>
@@ -178,27 +164,35 @@ export default function ContextHub() {
               </div>
 
               {tuningStep === 'input' && (
-                 <div className="flex-1 flex flex-col items-center justify-center py-8">
-                   <p className="text-sm text-[#586064] font-medium mb-8 text-center max-w-[240px]">
-                     针对该模型，需要调整什么？<br/><span className="text-xs text-gray-400 mt-2 block">例如：“把主推款换成A货”</span>
-                   </p>
+                 <div className="flex-1 flex flex-col py-4">
+                   <div className="mb-6">
+                     <h4 className="text-[13px] font-bold text-[#8b959a] mb-3">当前模型变量</h4>
+                     <div className="flex flex-wrap gap-2">
+                       {selectedStrategy?.variables?.map((v: any) => (
+                         <div key={v.label} className="bg-[#f0f1ff] text-[#5157a7] border border-[#e5e7ff] px-3 py-1.5 rounded-lg text-xs flex items-center">
+                           <span className="font-medium mr-1.5 opacity-70">{v.label}:</span>
+                           <span className="font-bold">{v.value}</span>
+                         </div>
+                       ))}
+                     </div>
+                   </div>
+
+                   <h4 className="text-[14px] font-bold text-[#2b3437] mb-2">需要调整什么？</h4>
+                   <textarea 
+                     autoFocus
+                     className="w-full h-32 bg-gray-50 border border-gray-200 rounded-[16px] p-4 text-[14px] leading-relaxed text-[#2b3437] focus:outline-none focus:border-[#5157a7] focus:bg-white resize-none transition-colors"
+                     placeholder='例如：“把主推款换成A货，稍微增加下笔记的发布频率...”'
+                   />
                    
-                   <motion.button 
-                      animate={isTuningRecording ? { scale: [1, 1.1, 1] } : {}}
-                      transition={{ repeat: isTuningRecording ? Infinity : 0, duration: 1.5 }}
-                      onClick={handleTuningRecordClick}
-                      className={`w-24 h-24 rounded-full flex items-center justify-center transition-all shadow-[0_8px_30px_rgb(0,0,0,0.08)] relative ${
-                        isTuningRecording ? 'bg-[#5157a7] text-white shadow-[#5157a7]/30' : 'bg-[#f0f1ff] text-[#5157a7]'
-                      }`}
-                   >
-                     {isTuningRecording && (
-                        <div className="absolute inset-0 rounded-full border-[3px] border-[#5157a7] animate-ping opacity-20" />
-                     )}
-                     <Mic size={32} />
-                   </motion.button>
-                   <p className="text-xs font-bold text-[#5157a7] mt-6">
-                     {isTuningRecording ? '正在聆听...' : '点击并长按说话'}
-                   </p>
+                   <div className="mt-8 flex gap-3">
+                     <button 
+                       onClick={handleTuningRecordClick}
+                       className="flex-1 py-3.5 bg-[#2b3437] text-white font-bold text-[15px] rounded-[16px] flex items-center justify-center active:scale-[0.98] transition-all"
+                     >
+                       <Zap size={18} className="mr-2 text-yellow-400" />
+                       AI 匹配并预览调整
+                     </button>
+                   </div>
                  </div>
               )}
 
